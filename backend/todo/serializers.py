@@ -3,12 +3,28 @@
 from rest_framework import serializers
  
 # import the todo data model
-from .models import Todo
+from .models import Recipe
+from .models import Ingredient
+from .models import User
  
 # create a serializer class
-class TodoSerializer(serializers.ModelSerializer):
+class RecipeSerializer(serializers.ModelSerializer):
  
     # create a meta class
     class Meta:
-        model = Todo
-        fields = ('id', 'title','description','completed')
+        model = Recipe
+        fields = ('id', 'title','ingredients','expScore')
+
+class UserSerializer(serializers.ModelSerializer):
+ 
+    # create a meta class
+    class Meta:
+        model = User
+        fields = ('id', 'name', 'recipes')
+
+class IngredientSerializer(serializers.ModelSerializer):
+ 
+    # create a meta class
+    class Meta:
+        model = Ingredient
+        fields = ('id', 'title', 'expDate')
